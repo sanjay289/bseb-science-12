@@ -11,7 +11,9 @@ Offline Android app for Bihar Board (BSEB) Inter / Class 12 Science board-exam p
 Content is in `app/src/main/assets/data/*.js` (one file per subject, format in `data/FORMAT.md`), shown in a WebView by `app.js`. Check content with:
 
 ```
-node tools/check-data.js
+node tools/check-data.js     # content structure, bilingual pairs
+node tools/smoke-test.js     # every route and quiz, stub DOM
+node tools/e2e-chromium.js   # real Chromium: clicks, reload persistence, English mode on all 570 screens
 ```
 
 ## Build
