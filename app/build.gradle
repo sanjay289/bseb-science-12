@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.sanjay.bsebscience12'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.sanjay.bsebscience12"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            if (project.hasProperty('BSEBSCI_STORE_FILE')) {
+                storeFile file(BSEBSCI_STORE_FILE)
+                storePassword BSEBSCI_STORE_PASSWORD
+                keyAlias BSEBSCI_KEY_ALIAS
+                keyPassword BSEBSCI_KEY_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (project.hasProperty('BSEBSCI_STORE_FILE')) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
