@@ -38,7 +38,7 @@ for (const s of ctx.SUBJECTS) {
       else {
         const keys = opts.map(o => JSON.stringify(o));
         if (new Set(keys).size !== 4) err(wq, 'duplicate options');
-        if (opts.some(o => /all of the|both a|a and b|a and c|none of the above|उपर्युक्त|\(a\)|\(b\)/i.test(Array.isArray(o) ? o[1] + o[0] : o))) err(wq, 'option refers to other options by position (options are shuffled)');
+        if (opts.some(o => /all of the|\bboth [a-d]\b|\b[a-d] and [a-d]\b|none of the above|उपर्युक्त|\([a-d]\)/i.test(Array.isArray(o) ? o[1] + o[0] : o))) err(wq, 'option refers to other options by position (options are shuffled)');
       }
       if (![0, 1, 2, 3].includes(ans)) err(wq, 'answer index must be 0-3');
       if (!isText(ex)) err(wq, 'bad explanation');

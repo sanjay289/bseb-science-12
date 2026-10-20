@@ -23,7 +23,7 @@ jobs:
         uses: android-actions/setup-android@v4
 
       - name: Check content
-        run: node tools/check-data.js
+        run: node tools/check-data.js && node tools/smoke-test.js
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --console=plain
